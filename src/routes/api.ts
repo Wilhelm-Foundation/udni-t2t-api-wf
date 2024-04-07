@@ -14,6 +14,39 @@ const upload = multer({ storage: multer.memoryStorage() });
 /**
  * Get phenopacket by hash
  */
+router.get("/phenopackets", async (req, res) => {
+  const { key }: { key?: string } = req.query;
+  if (key === "99e0ac67-d3c2-47de-b663-a237c9cf6374") {
+    try {
+      const entities = await PhenopacketModel.find();
+      if (!entities) return res.status(404).send("Not found");
+      return res.json(entities);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal server error");
+    }
+  }
+  return res.status(400).send("Bad query");
+});
+
+router.get("/formdatas", async (req, res) => {
+  const { key }: { key?: string } = req.query;
+  if (key === "99e0ac67-d3c2-47de-b663-a237c9cf6374") {
+    try {
+      const entities = await FormDataModel.find();
+      if (!entities) return res.status(404).send("Not found");
+      return res.json(entities);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal server error");
+    }
+  }
+  return res.status(400).send("Bad query");
+});
+
+/**
+ * Get phenopacket by hash
+ */
 router.get("/phenopacket", async (req, res) => {
   const { hash: _hash }: { hash?: string } = req.query;
   if (_hash) {
