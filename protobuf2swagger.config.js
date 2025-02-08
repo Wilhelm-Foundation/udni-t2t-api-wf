@@ -13,6 +13,7 @@ module.exports = {
       'phenopacket-schema/src/main/proto/phenopackets/schema/v2/core/meta_data.proto',
       'phenopacket-schema/src/main/proto/phenopackets/schema/v2/core/pedigree.proto',
       'phenopacket-schema/src/main/proto/phenopackets/schema/v2/core/phenotypic_feature.proto',
+      'phenopacket-schema/src/main/proto/ga4gh/vrs/v1/*.proto'
     ],
     // Optional
     dist: 'apischema.json',
